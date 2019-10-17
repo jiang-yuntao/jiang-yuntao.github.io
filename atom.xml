@@ -23,13 +23,13 @@
     <published>2019-10-16T12:30:32.000Z</published>
     <updated>2019-10-17T12:28:50.000Z</updated>
     
-    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:02:08 GMT+0800 (GMT+08:00) --><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><blockquote><p>比较相邻两个节点大小，然后移动，一次完整遍历后尾端或首部形成最大或最小值，依次下去就排好序了，就如同水中泡泡“如果大了的话就会往上移动，导致最上面的是最大的”<code>java 冒泡排序要注意每次是否是在尾端生成的定位值，编写代码时注意要去掉这个位置的遍历，不要去错了</code></p></blockquote><p>###</p><!-- rebuild by neat -->]]></content>
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:04:58 GMT+0800 (GMT+08:00) --><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><blockquote><p>比较相邻两个节点大小，然后移动，一次完整遍历后尾端或首部形成最大或最小值，依次下去就排好序了，就如同水中泡泡“如果大了的话就会往上移动，导致最上面的是最大的”<code>java 冒泡排序要注意每次是否是在尾端生成的定位值，编写代码时注意要去掉这个位置的遍历，不要去错了</code></p></blockquote><p>###</p><!-- rebuild by neat -->]]></content>
     
     <summary type="html">
     
       
       
-        &lt;!-- build time:Thu Oct 17 2019 21:02:08 GMT+0800 (GMT+08:00) --&gt;&lt;h3 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;冒泡排序&quot;&gt;&lt;/a&gt;冒泡排序&lt;/h3&gt;
+        &lt;!-- build time:Thu Oct 17 2019 21:04:58 GMT+0800 (GMT+08:00) --&gt;&lt;h3 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;冒泡排序&quot;&gt;&lt;/a&gt;冒泡排序&lt;/h3&gt;
       
     
     </summary>
@@ -48,13 +48,13 @@
     <published>2019-10-15T11:26:34.000Z</published>
     <updated>2019-10-15T12:40:10.000Z</updated>
     
-    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:02:08 GMT+0800 (GMT+08:00) --><h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><blockquote><p>1.标记-清除算法<br>算法分为两个阶段：标记、清除，但是效率两个阶段都低，而且产生大量不连续内存碎片，导致提前处罚垃圾收集动作<br>2.复制算法<br>内存分为大小相等两块，但是每次只使用其中一块。当前一块用完了，复制存活对象到另一块上面，清理已使用的内存空间。但是耗费内存。改良算法为分为一块Eden和两块Survivor，HotSpot虚拟机默认两种比例8：1，不过当Survivor不够用时，需要老年代进行分配担保(Handle Promotion：存活对象直接进入老年代)<br>3.标记-整理算法<br>标记过程与第一种算法相同，但后续步骤是让所有存活对象都向一端移动，然后直接清理掉端边界以外的内存<br>4.分代收集算法</p></blockquote><h2 id="目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收"><a href="#目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收" class="headerlink" title="目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收"></a>目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收</h2><h6 id="hotsopt算法实现"><a href="#hotsopt算法实现" class="headerlink" title="hotsopt算法实现"></a>hotsopt算法实现</h6><ul><li>OopMap这种数据结构：直接得到哪些地方存在对象引用</li><li>安全点：程序停顿去gc的位置<br>以是否具有”<strong>让程序长时间执行的特征</strong>“为标准进行选定<br>有两种方案让gc发生时所有线程都跑到最近的安全点上再停顿下来：抢先式中断(Preemptive Suspension):<code>gc时先中断全部线程，有线程不在安全点，恢复线程，让它跑到安全点上，现在几乎没有虚拟机采用抢先式中断来暂停线程从而响应gc事件</code>；主动式终断(Voluntary Suspension): <code>gc需要中断线程时不直接对线程操作，设置标志，各个线程执行时主动轮询这个标志，发现中断标志为真就自己中断挂起，轮询标志的地方和安全点是重合的，另外加上创建对象需要分配内存的地方</code><br>安全区域:一段代码片段中，引用关系不发生变化。此区域任意地方开始gc都是安全的。进入安全区域的线程，离开之前要检查系统是否完成了根节点枚举(或者是整个gc过程)，完成了线程继续执行，反之必须等待到收到可以安全离开信号为止</li></ul><!-- rebuild by neat -->]]></content>
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:04:58 GMT+0800 (GMT+08:00) --><h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><blockquote><p>1.标记-清除算法<br>算法分为两个阶段：标记、清除，但是效率两个阶段都低，而且产生大量不连续内存碎片，导致提前处罚垃圾收集动作<br>2.复制算法<br>内存分为大小相等两块，但是每次只使用其中一块。当前一块用完了，复制存活对象到另一块上面，清理已使用的内存空间。但是耗费内存。改良算法为分为一块Eden和两块Survivor，HotSpot虚拟机默认两种比例8：1，不过当Survivor不够用时，需要老年代进行分配担保(Handle Promotion：存活对象直接进入老年代)<br>3.标记-整理算法<br>标记过程与第一种算法相同，但后续步骤是让所有存活对象都向一端移动，然后直接清理掉端边界以外的内存<br>4.分代收集算法</p></blockquote><h2 id="目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收"><a href="#目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收" class="headerlink" title="目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收"></a>目前商业虚拟机都采用了这种算法，根据对象存活周期的不同将内存划分为几块，一般分为新生代与老年代，这样根据各年代特点采取特定算法。如果新生代，每次都有大批对象死去，采用复制算法；老年代因为对象存活率高，没有额外空间对它进行分配担保，就必须使用”标记-清理”或者”标记-整理”算法来进行回收</h2><h6 id="hotsopt算法实现"><a href="#hotsopt算法实现" class="headerlink" title="hotsopt算法实现"></a>hotsopt算法实现</h6><ul><li>OopMap这种数据结构：直接得到哪些地方存在对象引用</li><li>安全点：程序停顿去gc的位置<br>以是否具有”<strong>让程序长时间执行的特征</strong>“为标准进行选定<br>有两种方案让gc发生时所有线程都跑到最近的安全点上再停顿下来：抢先式中断(Preemptive Suspension):<code>gc时先中断全部线程，有线程不在安全点，恢复线程，让它跑到安全点上，现在几乎没有虚拟机采用抢先式中断来暂停线程从而响应gc事件</code>；主动式终断(Voluntary Suspension): <code>gc需要中断线程时不直接对线程操作，设置标志，各个线程执行时主动轮询这个标志，发现中断标志为真就自己中断挂起，轮询标志的地方和安全点是重合的，另外加上创建对象需要分配内存的地方</code><br>安全区域:一段代码片段中，引用关系不发生变化。此区域任意地方开始gc都是安全的。进入安全区域的线程，离开之前要检查系统是否完成了根节点枚举(或者是整个gc过程)，完成了线程继续执行，反之必须等待到收到可以安全离开信号为止</li></ul><!-- rebuild by neat -->]]></content>
     
     <summary type="html">
     
       
       
-        &lt;!-- build time:Thu Oct 17 2019 21:02:08 GMT+0800 (GMT+08:00) --&gt;&lt;h3 id=&quot;垃圾收集算法&quot;&gt;&lt;a href=&quot;#垃圾收集算法&quot; class=&quot;headerlink&quot; title=&quot;垃圾收集算法&quot;&gt;&lt;/a&gt;垃圾收
+        &lt;!-- build time:Thu Oct 17 2019 21:04:58 GMT+0800 (GMT+08:00) --&gt;&lt;h3 id=&quot;垃圾收集算法&quot;&gt;&lt;a href=&quot;#垃圾收集算法&quot; class=&quot;headerlink&quot; title=&quot;垃圾收集算法&quot;&gt;&lt;/a&gt;垃圾收
       
     
     </summary>
@@ -71,7 +71,7 @@
     <published>2019-10-13T07:16:32.000Z</published>
     <updated>2019-10-15T09:46:56.000Z</updated>
     
-    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:02:08 GMT+0800 (GMT+08:00) --><h3 id="java对象内存存储布局"><a href="#java对象内存存储布局" class="headerlink" title="java对象内存存储布局"></a>java对象内存存储布局</h3><blockquote><p>1.对象头(header)<br>2.实例数据(instance data)<br>3.对齐填充(padding)</p></blockquote><h3 id="GCRoots-作为起点的对象-的对象"><a href="#GCRoots-作为起点的对象-的对象" class="headerlink" title="GCRoots(作为起点的对象)的对象"></a>GCRoots(作为起点的对象)的对象</h3><blockquote><p>1.虚拟机栈（栈帧中的本地变量表）中引用的对象<br>2.方法区中类静态属性引用的对象<br>3.方法区中常量引用的对象<br>4.本地方法栈中JNI（即一般说的Native方法）引用的对象</p></blockquote><h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><ul><li>强引用<blockquote><p>普遍存在</p></blockquote></li><li>软引用<blockquote><p>还有用并非必要，发生内存溢出前，将这些对象列入回收范围之中进行第二次回收，如果还没有足够内存，会抛出异常，JDK1.2后，提供SoftReference类来实现软引用</p></blockquote></li><li>弱引用<blockquote><p>弱引用描述非必需对象，强度比软引用更低，被弱引用关联的对象只能生存到下一次垃圾回收发生之前。JDk1.2之后，提供WeakReference类实现弱引用</p></blockquote></li><li>虚引用<blockquote><p>亦称为幽灵引用或者幻影引用，最弱的引用关系。是否有虚引用对一个对象来说完全不会影响其生存时间构成影响，也无法通过虚引用来取得一个对象实例。设置虚引用唯一目的就是为了能在对象被收集时收到一个系统通知。JDK1.2之后，提供了PhantomReference类来实现虚引用</p></blockquote></li></ul><!-- rebuild by neat -->]]></content>
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:04:58 GMT+0800 (GMT+08:00) --><h3 id="java对象内存存储布局"><a href="#java对象内存存储布局" class="headerlink" title="java对象内存存储布局"></a>java对象内存存储布局</h3><blockquote><p>1.对象头(header)<br>2.实例数据(instance data)<br>3.对齐填充(padding)</p></blockquote><h3 id="GCRoots-作为起点的对象-的对象"><a href="#GCRoots-作为起点的对象-的对象" class="headerlink" title="GCRoots(作为起点的对象)的对象"></a>GCRoots(作为起点的对象)的对象</h3><blockquote><p>1.虚拟机栈（栈帧中的本地变量表）中引用的对象<br>2.方法区中类静态属性引用的对象<br>3.方法区中常量引用的对象<br>4.本地方法栈中JNI（即一般说的Native方法）引用的对象</p></blockquote><h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><ul><li>强引用<blockquote><p>普遍存在</p></blockquote></li><li>软引用<blockquote><p>还有用并非必要，发生内存溢出前，将这些对象列入回收范围之中进行第二次回收，如果还没有足够内存，会抛出异常，JDK1.2后，提供SoftReference类来实现软引用</p></blockquote></li><li>弱引用<blockquote><p>弱引用描述非必需对象，强度比软引用更低，被弱引用关联的对象只能生存到下一次垃圾回收发生之前。JDk1.2之后，提供WeakReference类实现弱引用</p></blockquote></li><li>虚引用<blockquote><p>亦称为幽灵引用或者幻影引用，最弱的引用关系。是否有虚引用对一个对象来说完全不会影响其生存时间构成影响，也无法通过虚引用来取得一个对象实例。设置虚引用唯一目的就是为了能在对象被收集时收到一个系统通知。JDK1.2之后，提供了PhantomReference类来实现虚引用</p></blockquote></li></ul><!-- rebuild by neat -->]]></content>
     
     <summary type="html">
     
@@ -93,13 +93,13 @@
     <published>2019-07-15T09:14:56.000Z</published>
     <updated>2019-07-15T09:16:46.000Z</updated>
     
-    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:02:08 GMT+0800 (GMT+08:00) --><p><code>第一篇文章</code></p><!-- rebuild by neat -->]]></content>
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 17 2019 21:04:58 GMT+0800 (GMT+08:00) --><p><code>第一篇文章</code></p><!-- rebuild by neat -->]]></content>
     
     <summary type="html">
     
       
       
-        &lt;!-- build time:Thu Oct 17 2019 21:02:08 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;code&gt;第一篇文章&lt;/code&gt;&lt;/p&gt;&lt;!-- rebuild by neat --&gt;
+        &lt;!-- build time:Thu Oct 17 2019 21:04:58 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;code&gt;第一篇文章&lt;/code&gt;&lt;/p&gt;&lt;!-- rebuild by neat --&gt;
       
     
     </summary>
